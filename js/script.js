@@ -37,6 +37,7 @@ const app = new Vue({
   data: {
     slides,
     activeSlideIndex: 0,
+    time: 0,
   },
   methods: {
     // se mi trovo ad un index > 0 allora posso andare indietro
@@ -65,7 +66,11 @@ const app = new Vue({
     },
 
     timerShow() {
-      const time = setInterval(this.showNextSlide, 3000);
+      this.time = setInterval(this.showNextSlide, 3000);
+    },
+
+    stopTimer() {
+      clearInterval(this.time);
     },
   },
 });
