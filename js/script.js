@@ -47,6 +47,7 @@ const app = new Vue({
         this.activeSlideIndex = this.slides.length - 1;
       }
     },
+
     // se mi trovo ad un index < della lunghezza di slides  allora posso andare avanti
     showNextSlide() {
       if (this.activeSlideIndex < this.slides.length - 1) {
@@ -57,10 +58,14 @@ const app = new Vue({
     },
 
     showIfActive(item) {
-      // vado a prendere il titolo che è ugualeal titolo dell'index di slides
+      // vado a prendere il titolo che è uguale al titolo dell'index di slides
       const isActive = item.title === this.slides[this.activeSlideIndex].title;
       // se true applico thumb active, se false thumb
       return isActive ? "thumb active" : "thumb";
+    },
+
+    timerShow() {
+      const time = setInterval(this.showNextSlide, 3000);
     },
   },
 });

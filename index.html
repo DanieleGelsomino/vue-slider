@@ -16,9 +16,9 @@
     <div id="app">
 
         <div class="container">
-            <div class="slider-wrapper" tabindex="0">
+            <div class="slider-wrapper" tabindex="0" @keyup.up="showNextSlide" @keydown.down="showNextSlide">
 
-                <div class="item">
+                <div class="item" @mouseover="timerShow()">
                     <img :src="slides[activeSlideIndex].image" :alt="slides[activeSlideIndex].title" />
                     <div class="text">
                         <h3>{{slides[activeSlideIndex].title}}</h3>
