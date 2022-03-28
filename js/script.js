@@ -66,11 +66,32 @@ const app = new Vue({
     },
 
     timerShow() {
-      this.time = setInterval(this.showNextSlide, 3000);
+      if (this.time === 0) {
+        this.time = setInterval(this.showNextSlide, 3000);
+      }
     },
 
     stopTimer() {
-      clearInterval(this.time);
+      if (this.time !== 0) {
+        clearInterval(this.time);
+        this.time = 0;
+      }
     },
+
+    selectSlide(item) {
+      // indice numerico che indica la posizione dell'elemento
+      // all'interno dell'array
+      this.activeSlideIndex = item;
+    },
+    // se non ci fosse l'index saremmo costretti a iterare l'array
+    // alla ricerca dell'elemento e per essere certi di recuperare
+    // l'indice corretto gli elementi non dovrebbero essere duplicati/simili
+    //   const index = this.slides.findIndex((slide) => {
+    //     return slide.title === item.title;
+    //   });
+    //   if (index > -1) {
+    //     this.activeSlideIndex = index;
+    //   }
+    // },
   },
 });
